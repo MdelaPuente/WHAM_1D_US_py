@@ -77,6 +77,7 @@ Both the `wham1D.py` and `errors_wham1D.py` codes take the same text file as inp
 
    ```sh
    python wham1D.py input_file.txt SUFFIX
+   python errors_wham1D.py input_file.txt SUFFIX
    ```
 
 The input_file.txt is a file containing a line for each window simulation formatted as:

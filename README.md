@@ -34,7 +34,7 @@ A python implementation of the Weighted Histogram Analysis Method (WHAM) to obta
 
 It works only in 1D and makes use of files containing the collective variables (CV) (one per window) formatted as the default [Plumed](https://www.plumed.org/) COLVAR files (one line per MD step). The `wham1D.py` code writes an output file (in text format) with the grid of CV values and associated free-energy values and saves `.png` images of the profile and other computed quantities (biased and unbiased probability distributions, window free-energy segments, convergence info, etc.). If these images are unwanted or if you do not want to import `matplotlib.pyplot` you can simply comment the `import` line at the beginning of the code as well as the `MAKE FIGURES` section at the end and you should still get the text file. The errors are calculated separately by `errors_wham1D.py` and printed to a separate text file. (see `tests`folder)
 
-**Important:** you should define sensible minimal CV value (`qmin`), CV spacing (`Δq`), number of bins for the CV grid (`Nb`), number of equilibration frames (`EQUIL_FRAMES`, an integer value containing the number of initial lines of the CV files that should be skipped) and `kT` value (in eV, if different fromt that at 300 K) directly inside the codes in the `Define parameters and recover data` section. It might be included in the input file in a later version of the code (work in progress).
+**Important:** you should define the `kT` value in eV if it is different fromt that at 300 K directly inside the `wham1D.py` code in the `Define parameters and recover data` section. It might be included in the input file in a later version of the code.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -80,10 +80,10 @@ Both the `wham1D.py` and `errors_wham1D.py` codes take the same text file as inp
    python errors_wham1D.py input_file.txt SUFFIX
    ```
 
-The input_file.txt is a file containing a line for each window simulation formatted as:
+The input_file.txt is a file containing a first parameters line (starts with `#`) and subsequent lines for each window simulation formatted as:
 
    ```sh
-   # Optional comment line
+   # EQUIL_FRAMES CV_BIN_WIDTH MIN_CV_VALUE NUMBER_OF_CV_BINS
    PATH_TO_CV_FILE1/CV_FILE_NAME1 TARGET_CV_VALUE1 KAPPA_VALUE_IN_EV1 
    PATH_TO_CV_FILE2/CV_FILE_NAME2 TARGET_CV_VALUE2 KAPPA_VALUE_IN_EV2 
    ```

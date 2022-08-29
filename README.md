@@ -63,9 +63,7 @@ The following packages are required for the codes to work:
    ```sh
    git clone https://github.com/laagegroup/WHAM_1D_US_py.git
    ```
-   ```
 2. Go into the tests folder
-
 3. Test the program following the `tests/REDME.md` guidelines. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -84,7 +82,7 @@ Both the `wham1D.py` and `errors_wham1D.py` codes take the same text file as inp
 The input_file.txt is a file containing a line for each window simulation formatted as:
 
    ```sh
-   # Possible comment line
+   # Optional comment line
    PATH_TO_CV_FILE1/CV_FILE_NAME1 TARGET_CV_VALUE1 KAPPA_VALUE_IN_EV1 
    PATH_TO_CV_FILE2/CV_FILE_NAME2 TARGET_CV_VALUE2 KAPPA_VALUE_IN_EV2 
    ```

@@ -34,20 +34,27 @@ except:
     inp = "input.txt"
 
 
-
 with open(inp,'r') as f:
     pre = f.readlines()
     if pre[0][0] == '#':
+        params = pre[0].split()
         L = pre[1:]
     else:
+        params = ["#", "0", "0.1", "-1.0", "240"]
         L = pre
 
+# Organize input data:
 colvars, s_k, kappas = [], [], []
 for line in L:
     colvars.append(line.split()[0])
     s_k.append(round(float(line.split()[1]),4))
     kappas.append(round(float(line.split()[2]),4))
 
+# Read parameters from first line:
+EQUIL_FRAMES = int(params[1])                       # Number of equilibration frames in window simulations
+Δq           = float(params[2])                     # bin width in CV units
+qmin         = float(params[3])                     # minimal CV value (CV unit)
+Nb           = int(params[4])                       # number of bins between qmin and (Δq*Nb - qmin)
     
 print("Paths to CV files: ", colvars, "\n")
 print("Centers of windows: ", s_k, "\n")
@@ -81,11 +88,11 @@ FEP_out = "fep"+ suffix +".out"
 #                                Define parameters and recover data                                          #
 #------------------------------------------------------------------------------------------------------------#
 
-EQUIL_FRAMES = 40001                                # Number of equilibration frames in window simulations
+#EQUIL_FRAMES = 40001                                # Number of equilibration frames in window simulations
 nw           = len(s_k)                             # number of windows
-Δq           = 0.05                                 # bin width in CV units
-qmin         = -1.0                                 # minimal CV value (CV unit)
-Nb           = 240                                  # number of bins between qmin and (Δq*Nb - qmin)
+#Δq           = 0.05                                 # bin width in CV units
+#qmin         = -1.0                                 # minimal CV value (CV unit)
+#Nb           = 240                                  # number of bins between qmin and (Δq*Nb - qmin)
 kT           = 0.025851                             # in eV at 300K
 β            = 38.6832                              # eV-1
 grid = [round(qmin+i*Δq+Δq/2,5) for i in range(Nb)] # The centers of each bin
@@ -153,7 +160,7 @@ full_probability = np.asarray([0 for i in range(Nb)], dtype=np.float128)
 
 limit = 0
 convergence = []
-cvg_criterion = 1.0e-7 # eV
+cvg_criterion = 1.0e-7 # eV, arbitrary but seems to work
 
 print("Convergence criterion on maximum evolution of free-energy coefficients (<"\
       +"{:e}".format(cvg_criterion)+" at convergence)\n")

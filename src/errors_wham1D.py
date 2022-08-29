@@ -33,7 +33,13 @@ else:
     
 ######### READ AND ORGANIZE INPUT 
 with open(inp,'r') as inp:
-    L = inp.readlines()[1:]
+    pre = inp.readlines()
+    if pre[0][0] == "#":
+        params = pre[0].split()
+        L      = pre[1:]
+    else:
+        params = ["#", "0"]
+        L      = pre 
 
 print("Windows sorted by increasing value of the collective variable:")
 unsorted_colvars, unsorted_s_k, unsorted_kappas = [], [], []
@@ -60,7 +66,8 @@ print("Force constants applied: ", kappas, "\n")
 nw = len(s_k)                                             # number of windows
 kT = 0.593/factor                                         # in US units at 300K (like KAPPAS !)
 β = 1.686*factor                                          # in US units at 300K (like KAPPAS !)
-EQUIL_FRAMES = 40001                                      # number of equilibration frames in window simulations
+EQUIL_FRAMES = int(params[1])                             # number of equilibration frames in window simulations
+#EQUIL_FRAMES = 40001                                      # number of equilibration frames in window simulations
 n_blocks = 8                                              # number of blocks for block averaging
 print("We will use n =",n_blocks," blocks for computing errors")
 ΔCV_list = [round(s_k[i+1]-s_k[i],6) for i in range(len(s_k)-1)]  # in CV units

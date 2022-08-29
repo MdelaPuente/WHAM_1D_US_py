@@ -1,6 +1,6 @@
 ## Tests
 
-You can test the `wham1D.py` and `errors_wham1D.py` on the CV files contained in the `COLVAR` folder with the `input.txt` file as input. In the `bin` folder there are the outputs obtained by running (from the `tests` folder with Python 3.8.8):
+You can test the `wham1D.py` and `errors_wham1D.py` on the CV files contained in the `COLVAR` folder with the `input.txt` file as input. In the `example_outputs` folder there are the outputs obtained by running (from the `tests` folder with Python 3.8.8):
 ```sh
 python ../src/wham1D.py input.txt TEST
 python ../src/errors_wham1D.py input.txt TEST

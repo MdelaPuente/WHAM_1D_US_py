@@ -64,7 +64,7 @@ The following packages are required for the codes to work:
    git clone https://github.com/laagegroup/WHAM_1D_US_py.git
    ```
 2. Go into the tests folder
-3. Test the program following the `tests/REDME.md` guidelines. 
+3. Test the program following the `tests/README.md` guidelines. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -1,5 +1,5 @@
 """
-MdelaPuente, Mars 2021
+mdelapuente, 03-2021
 WHAM procedure for obtaining free energy profile from US calculation biasing a single collective variable
 The script expects an input file containing, in every line, the relative path to the US output file (array with 
 values of the collective variable in different lines), the center of the biasing potential (in eV) and the force

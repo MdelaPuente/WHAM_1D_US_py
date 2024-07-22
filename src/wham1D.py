@@ -1,5 +1,5 @@
 """
-MdelaPuente, Mars 2021
+mdelapuente, 03-2021
 WHAM procedure for obtaining free energy profile from US calculation biasing a single collective variable
 The script expects an input file containing, in every line, the relative path to the US output file (array with 
 values of the collective variable in different lines), the center of the biasing potential (in eV) and the force
@@ -177,7 +177,7 @@ while limit < 10000 :
     print_ind +=1
         
     if max(abs(A-old_A)) > cvg_criterion:
-        convergence.append(abs(max(A-old_A)))
+        convergence.append(max(abs(A-old_A)))
         old_A = A.copy()
 
         # Update probability (eq1):
@@ -195,8 +195,8 @@ while limit < 10000 :
             A[w] = np.mean(old_A) - kT*np.log(simps(full_probability*np.exp(-β*W[w]), x=grid)) 
         
     else:
-        convergence.append(abs(max(A-old_A)))
-        print(print_ind, " ", abs(max(A-old_A)) ," ", abs(min(A-old_A)), '\n')
+        convergence.append(max(abs(A-old_A)))
+        print(print_ind, " ", max(abs(A-old_A)) ," ", min(abs(A-old_A)), '\n')
         break
 
 print("\n END of WHAM cycle\n")
@@ -246,7 +246,7 @@ fig = Fig.add_subplot((111))
 
 fig.plot(convergence)
 fig.set_xlabel('Number of WHAM iterations', size=20)
-fig.set_ylabel('|max(A(k)- A(k-1))|', size=20)
+fig.set_ylabel('max|A(k)- A(k-1)|', size=20)
 fig.set_title('Convergence of WHAM algorithm', size=20)
 plt.xticks(size=18)
 plt.yticks(size=18)

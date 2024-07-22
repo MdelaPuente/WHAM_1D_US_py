@@ -32,7 +32,7 @@
 
 A python implementation of the Weighted Histogram Analysis Method (WHAM) to obtain free-energy profiles from Umbrella Sampling simulations (`wham1D.py`) as well as a script for computing statistically significant errors (`errors_wham1D.py`) as prescribed by Zhu and Hummer (see below). 
 
-It works only in 1D and makes use of files containing the collective variables (CV) (one per window) formatted as the default [Plumed](https://www.plumed.org/) COLVAR files (one line per MD step). The `wham1D.py` code writes an output file (in text format) with the grid of CV values and associated free-energy values and saves `.png` images of the profile and other computed quantities (biased and unbiased probability distributions, window free-energy segments, convergence info, etc.). If these images are unwanted or if you do not want to import `matplotlib.pyplot` you can simply comment the `import` line at the beginning of the code as well as the `MAKE FIGURES` section at the end and you should still get the text file. The errors are calculated separately by `errors_wham1D.py` and printed to a separate text file. (see `tests`folder)
+It works only in 1D and makes use of files containing the collective variables (CV) (one per window) formatted as the default [Plumed](https://www.plumed.org/) COLVAR files (one line per MD step). The `wham1D.py` code writes an output file (in text format) with the grid of CV values and associated free-energy values and saves `.png` images of the profile and other computed quantities (biased and unbiased probability distributions, window free-energy segments, convergence info, etc.). If these images are unwanted or if you do not want to import `matplotlib.pyplot` you can simply comment the `import` line at the beginning of the code as well as the `MAKE FIGURES` section at the end and you should still get the text file. The errors are calculated separately by `errors_wham1D.py` and printed to a separate text file. (see `tests` folder)
 
 **Important:** you should define the `kT` value in eV if it is different fromt that at 300 K directly inside the `wham1D.py` code in the `Define parameters and recover data` section. It might be included in the input file in a later version of the code.
 
@@ -47,7 +47,7 @@ It works only in 1D and makes use of files containing the collective variables (
 
 ### Prerequisites
 
-This Python script has been tested with Python 3.6 and 3.7.3 and is expected to work with later versions as well.
+This Python script has been tested with Python 3.6, 3.7.3 and 3.8.8 and is expected to work with later versions as well.
 
 The following packages are required for the codes to work:
 * `os` 

@@ -40,7 +40,7 @@ with open(inp,'r') as f:
         params = pre[0].split()
         L = pre[1:]
     else:
-        params = ["0", "0.1", "-1.0", "240"]
+        params = ["#", "0", "0.1", "-1.0", "240"]
         L = pre
 
 # Organize input data:
